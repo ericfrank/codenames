@@ -23,7 +23,7 @@ Athlete
 Atlantis
 Aunt
 Avocado
-Baby-Sitter
+Babysitter
 Backbone
 Bag
 Baguette

@@ -84,7 +84,7 @@ class App extends Component {
         </header>
         <ul className="game-board">
           {wordList.map((word, index) => (
-            <li key={word.text}>
+            <li key={words[word.index]}>
               <button
                 type="button"
                 onClick={() => this.handleSetActive(index)}

@@ -1,5 +1,6 @@
 {
   "name": "codenames",
+  "homepage": "https://ericfrank.com/codenames",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

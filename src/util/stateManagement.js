@@ -50,7 +50,7 @@ const getNewState = () => {
 };
 
 const getStateFromUrl = () => {
-  const hash = document.location.hash.concat().replace('#', '').split(',');
+  const hash = document.location.search.concat().replace('?', '').split(',');
   const wordIndex = hash.slice(0, 25);
   const team = hash.slice(25, 50);
   const active = hash.slice(50, 75);
@@ -67,7 +67,7 @@ const getStateFromUrl = () => {
 };
 
 export const getStartingState = (newGame = false) => {
-  if (document.location.hash && !newGame) {
+  if (document.location.search && !newGame) {
     return getStateFromUrl();
   }
 
@@ -84,7 +84,9 @@ export const stateToHash = ({ wordList, answerKey }) => {
 };
 
 export const saveStateToUrl = (state) => {
-  window.location.hash = stateToHash(state);
+  const newurl = `${document.location.origin}${document.location.pathname}?${stateToHash(state)}`;
+
+  window.history.pushState({ path: newurl }, '', newurl);
 };
 
 export default null;
