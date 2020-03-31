@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       ...getStartingState(),
       linkCopied: false,
+      modalOpen: false,
     };
   }
 
@@ -42,19 +43,25 @@ class App extends Component {
     setTimeout(() => this.setState({ linkCopied: false }), 2000);
   };
 
+  handleToggleModal = () => this.setState(state => ({ modalOpen: !state.modalOpen }));
+
   render() {
-    const { wordList, answerKey, linkCopied } = this.state;
+    const {
+      wordList, answerKey, linkCopied, modalOpen,
+    } = this.state;
 
     const getActiveClass = (team) => {
+      let result = 'neutral';
+
       if (team === 1) {
-        return 'active-one';
+        result = 'one';
       } else if (team === 2) {
-        return 'active-two';
+        result = 'two';
       } else if (team === 3) {
-        return 'active-death';
+        result = 'death';
       }
 
-      return 'neutral';
+      return `active-${result}`;
     };
 
     const getTeamCardsRemaining = (team) => wordList
@@ -111,8 +118,26 @@ class App extends Component {
             >
               {linkCopied ? 'Copied!' : 'Copy Codemaster Link'}
             </button>
+            <button
+              type="button"
+              onClick={this.handleToggleModal}
+            >
+              Help
+            </button>
           </nav>
         )}
+        <div class={`modal ${modalOpen ? 'modal-open' : ''}`}>
+          <button type="button" onClick={this.handleToggleModal}>×</button>
+          <div class="modal-inner">
+            <h1 className="text-center">Instructions</h1>
+            <ul>
+              <li>Screenshare in your video chat platform of choice. The host is responsible for clicking the cards.</li>
+              <li>Click "Copy Codemaster Link" and text it to the codemasters (clue-givers).</li>
+              <li>Two teams: green and purple. Yellow cards are neutral. Black card is death.</li>
+              <li>Numbers at the top of the screen show how many cards remain for each team. Team with 9 cards goes first (random each game).</li>
+            </ul>
+          </div>
+        </div>
       </>
     );
   }

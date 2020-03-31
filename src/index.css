@@ -96,6 +96,7 @@ header .team-2 {
 button {
   cursor: pointer;
   outline: none;
+  appearance: none;
 }
 
 .game-board {
@@ -196,4 +197,49 @@ nav button:hover {
   header {
     letter-spacing: 15px;
   }
+}
+
+.modal {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, .95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity .4s ease;
+}
+
+.modal-open {
+  opacity: 1;
+  z-index: 1;
+}
+
+.modal button {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  font-size: 3rem;
+  background: none;
+  border: 0;
+  line-height: 1;
+}
+
+.modal-inner {
+  width: 100%;
+  max-width: 25rem;
+  padding: 1rem;
+}
+
+.modal-inner ul {
+  padding-left: 1.2rem;
+}
+
+.text-center {
+  text-align: center;
 }
