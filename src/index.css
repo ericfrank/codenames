@@ -228,6 +228,8 @@ nav button:hover {
   background: none;
   border: 0;
   line-height: 1;
+  margin: 0;
+  padding: 0;
 }
 
 .modal-inner {
