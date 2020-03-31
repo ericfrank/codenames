@@ -37,7 +37,7 @@ class App extends Component {
   handleCopyCodemasterLink = () => {
     const { wordList } = this.state;
 
-    clipboard(`${document.location.origin}${document.location.pathname}#${stateToHash({ wordList, answerKey: true })}`);
+    clipboard(`${document.location.origin}${document.location.pathname}?${stateToHash({ wordList, answerKey: true })}`);
     this.setState({ linkCopied: true });
     setTimeout(() => this.setState({ linkCopied: false }), 2000);
   };
