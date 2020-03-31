@@ -47,11 +47,11 @@ class App extends Component {
 
     const getActiveClass = (team) => {
       if (team === 1) {
-        return 'one';
+        return 'active-one';
       } else if (team === 2) {
-        return 'two';
+        return 'active-two';
       } else if (team === 3) {
-        return 'death';
+        return 'active-death';
       }
 
       return 'neutral';
@@ -85,10 +85,11 @@ class App extends Component {
         <ul className="game-board">
           {wordList.map((word, index) => (
             <li key={words[word.index]}>
+              {console.log(words[word.index].length)}
               <button
                 type="button"
                 onClick={() => this.handleSetActive(index)}
-                className={word.active || answerKey ? `active-${getActiveClass(word.team)}` : ''}
+                className={word.active || answerKey ? getActiveClass(word.team) : ''}
                 disabled={winner || answerKey}
               >
                 {words[word.index]}
