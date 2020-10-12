@@ -92,7 +92,6 @@ class App extends Component {
         <ul className="game-board">
           {wordList.map((word, index) => (
             <li key={words[word.index]}>
-              {console.log(words[word.index].length)}
               <button
                 type="button"
                 onClick={() => this.handleSetActive(index)}
