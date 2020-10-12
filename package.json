@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rm -r _static 2>/dev/null; react-scripts build && mv build _static",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
