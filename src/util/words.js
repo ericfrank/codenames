@@ -1,4 +1,20 @@
 export default `
+Santa
+Sleigh
+Reindeer
+Spaghetti
+Elf
+Eggplant
+Cannoli
+Christmas
+Hannukah
+Menorah
+Dreidel
+Latke
+Rudolph
+Stocking
+Cocoa
+Fireplace
 Acne
 Acre
 Addendum
