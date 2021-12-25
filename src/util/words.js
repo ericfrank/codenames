@@ -15,6 +15,18 @@ Rudolph
 Stocking
 Cocoa
 Fireplace
+Hot Chocolate
+Candy cane
+Ornament
+Twine
+Present
+Snowman
+Sled
+Mistletoe
+Antipasto
+Angel
+Jolly
+Tinsel
 Acne
 Acre
 Addendum
