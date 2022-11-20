@@ -110,5 +110,3 @@ export const saveStateToUrl = (state: {
 
   window.history.pushState({ path: newurl }, "", newurl);
 };
-
-export default null;
