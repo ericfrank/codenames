@@ -697,4 +697,6 @@ Zero
 Zipper
 Zone
 Zoo
-`.split('\n').filter(word => word);
+`
+  .split("\n")
+  .filter((word) => word);

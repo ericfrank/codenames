@@ -1,0 +1,412 @@
+$text-shadow-color: #fff;
+$button-background: rgba(255, 255, 255, 0.33);
+$button-text: #274292;
+$button-transition-timing: ease;
+$button-transition-slow: 0.4s $button-transition-timing;
+$button-transition-fast: 0.2s $button-transition-timing;
+
+$neutral-button-background: #fff7bb;
+$neutral-button-text: #695c19;
+
+$one-background: rgb(193, 255, 228);
+$one-saturated: rgb(27, 179, 110);
+$one-button-background: rgb(138, 210, 179);
+$one-button-text: #19543f;
+
+$two-background: rgb(214, 196, 255);
+$two-saturated: #8e41f3;
+$two-button-background: rgb(191, 182, 226);
+$two-button-text: #482382;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 1rem;
+  font-family: "BenchNine", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:not(.dark-mode) .light-mode-hidden {
+    display: none;
+  }
+
+  @media screen and (min-width: 450px) and (min-height: 450px) {
+    font-size: 1.3rem;
+  }
+
+  @media screen and (min-width: 600px) and (min-height: 600px) {
+    font-size: 1.8rem;
+  }
+
+  @media screen and (min-width: 900px) and (min-height: 900px) {
+    font-size: 2.1rem;
+  }
+
+  @media screen and (min-width: 1300px) and (min-height: 1300px) {
+    font-size: 2.5rem;
+  }
+
+  @media screen and (min-width: 1600px) and (min-height: 1600px) {
+    font-size: 2.9rem;
+  }
+}
+
+body {
+  margin: 0;
+
+  &.winner-one {
+    background: $one-background;
+  }
+
+  &.winner-two {
+    background: $two-background;
+  }
+
+  &.death {
+    background: rgb(19, 19, 19);
+  }
+
+  &:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(
+      90deg,
+      $one-background 0%,
+      $two-background 100%
+    );
+    opacity: 1;
+    transition: opacity 2s ease;
+  }
+
+  &.winner-one:before,
+  &.winner-two:before,
+  &.death:before {
+    opacity: 0;
+  }
+}
+
+header {
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 0 10px 25px;
+  letter-spacing: 27px;
+  color: #fff;
+  text-shadow: 1px 1px #4a2afb;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+
+  .winner-one & {
+    text-shadow: 1px 1px $text-shadow-color;
+    color: $one-saturated;
+  }
+
+  .winner-two & {
+    text-shadow: 1px 1px $text-shadow-color;
+    color: $two-saturated;
+  }
+
+  .death & {
+    text-shadow: 1px 1px $text-shadow-color;
+    color: #000;
+  }
+
+  .team-1 {
+    text-shadow: 1px 1px $text-shadow-color;
+    color: $one-saturated;
+  }
+
+  .team-2 {
+    text-shadow: 1px 1px $text-shadow-color;
+    color: $two-saturated;
+  }
+
+  @media screen and (max-width: 500px) {
+    letter-spacing: 15px;
+  }
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+}
+
+.game-board {
+  padding: 2px;
+  width: 100%;
+  max-width: calc(100vh - 5rem);
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+  li {
+    list-style-type: none;
+    width: calc(20% - 2px);
+    height: 0;
+    padding-top: calc(20% - 2px);
+    margin: 1px;
+    position: relative;
+
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      border: 0;
+      border-radius: 0;
+      background-color: $button-background;
+      color: $button-text;
+      text-transform: uppercase;
+      transition: background-color $button-transition-slow,
+        color $button-transition-slow, box-shadow $button-transition-fast;
+      hyphens: auto;
+      padding: 2px;
+      margin: 0;
+      font-weight: 600;
+      font-family: inherit;
+      font-size: 1rem;
+
+      &.active-one {
+        background-color: $one-button-background;
+        color: $one-button-text;
+      }
+
+      &.active-two {
+        background-color: $two-button-background;
+        color: $two-button-text;
+      }
+
+      &.active-neutral {
+        background-color: $neutral-button-background;
+        color: $neutral-button-text;
+      }
+
+      &.active-death {
+        color: #fff;
+        background-color: #000;
+      }
+
+      &:hover {
+        box-shadow: 0 0 14px rgba(14, 0, 230, 0.15);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+nav {
+  text-align: center;
+  margin-top: 0.5rem;
+
+  button {
+    border: 0;
+    border-radius: 2em;
+    background-color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    padding: 0.4rem 0.5rem;
+    font-weight: 700;
+    font-size: 0.6rem;
+    color: #4a2afb;
+    transition: all 0.4s ease;
+    margin: 0 0.5rem;
+
+    &:hover {
+      box-shadow: 1px 1px 6px rgba(35, 20, 158, 0.15);
+    }
+  }
+}
+
+.modal {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    font-size: 3rem;
+    background: none;
+    border: 0;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.modal-open {
+  opacity: 1;
+  z-index: 1;
+}
+
+.modal-inner {
+  width: 100%;
+  max-width: 25rem;
+  padding: 1rem;
+
+  ul {
+    padding-left: 1.2rem;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+$dark-text-shadow-color: #000;
+$dark-button-background: rgba(0, 0, 0, 0.33);
+$dark-button-text: #7091f6;
+
+$dark-neutral-button-background: #5c4c04;
+$dark-neutral-button-text: #f6e48c;
+
+$dark-one-background: rgb(3, 35, 23);
+$dark-one-saturated: rgb(99, 185, 106);
+$dark-one-button-background: rgb(11, 69, 44);
+$dark-one-button-text: #b6efda;
+
+$dark-two-background: rgb(20, 8, 47);
+$dark-two-saturated: #a16ce7;
+$dark-two-button-background: rgb(69, 49, 100);
+$dark-two-button-text: #e9e0fb;
+
+html.dark-mode {
+  .dark-mode-hidden {
+    display: none;
+  }
+
+  body {
+    background: rgb(19, 19, 19);
+
+    &:before {
+      background: linear-gradient(
+        90deg,
+        $dark-one-background 0%,
+        $dark-two-background 100%
+      );
+    }
+
+    &.winner-one {
+      background: $dark-one-background;
+    }
+
+    &.winner-two {
+      background: $dark-two-background;
+    }
+  }
+
+  header {
+    color: #f6f5ff;
+    text-shadow: 1px 1px #2300eb;
+
+    .winner-one & {
+      text-shadow: 1px 1px $dark-text-shadow-color;
+      color: $dark-one-saturated;
+    }
+
+    .winner-two & {
+      text-shadow: 1px 1px $dark-text-shadow-color;
+      color: $dark-two-saturated;
+    }
+
+    .death & {
+      text-shadow: 1px 1px $dark-text-shadow-color;
+      color: #000;
+    }
+
+    .team-1 {
+      text-shadow: 1px 1px $dark-text-shadow-color;
+      color: $dark-one-saturated;
+    }
+
+    .team-2 {
+      text-shadow: 1px 1px $dark-text-shadow-color;
+      color: $dark-two-saturated;
+    }
+  }
+
+  .game-board {
+    li {
+      button {
+        background-color: $dark-button-background;
+        color: $dark-button-text;
+
+        &.active-one {
+          background-color: $dark-one-button-background;
+          color: $dark-one-button-text;
+        }
+
+        &.active-two {
+          background-color: $dark-two-button-background;
+          color: $dark-two-button-text;
+        }
+
+        &.active-neutral {
+          background-color: $dark-neutral-button-background;
+          color: $dark-neutral-button-text;
+        }
+
+        &.active-death {
+          color: #fff;
+          background-color: #000;
+        }
+
+        &:hover {
+          box-shadow: 0 0 14px rgba(192, 188, 255, 0.2);
+        }
+      }
+    }
+  }
+
+  nav {
+    button {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #bfb4ff;
+
+      &:hover {
+        box-shadow: 1px 1px 6px rgba(237, 237, 237, 0.15);
+      }
+    }
+  }
+
+  .modal {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.95);
+
+    button {
+      color: #fff;
+    }
+  }
+}
