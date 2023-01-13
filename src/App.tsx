@@ -70,7 +70,7 @@ const App = () => {
   const teamTwoWinner = teamTwoRemaining === 0;
   const death = getTeamCardsRemaining(3) === 0;
   const winner = teamOneWinner || teamTwoWinner || death;
-  let title = "Codenames";
+  let title = "DashXPnames";
 
   if (answerKey) {
     title = "Codemaster";
